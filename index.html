@@ -1,1 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norman Abidaoud — Electrical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12161c;
+    --paper:#f6f7f9;
+    --paper-dim:#eceef1;
+    --copper:#b5652f;
+    --copper-deep:#8f4e22;
+    --teal:#0f5c5c;
+    --line:#d7dade;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+    background-image:radial-gradient(var(--line) 1px, transparent 1px);
+    background-size:22px 22px;
+  }
+  a{color:var(--copper-deep);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
 
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(246,247,249,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header.nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:60px;
+  }
+  header.nav .name{
+    font-family:var(--mono); font-weight:600; font-size:15px; letter-spacing:0.02em;
+    text-decoration:none; color:var(--ink);
+  }
+  header.nav nav{display:flex; gap:22px;}
+  header.nav nav a{
+    color:var(--ink); text-decoration:none; font-size:14px; font-weight:500;
+    opacity:0.75;
+  }
+  header.nav nav a:hover{opacity:1;}
+
+  section{padding:64px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .hero{padding:76px 0 56px;}
+  .hero .wrap{display:grid; grid-template-columns:1.15fr 1fr; gap:44px; align-items:center;}
+  .hero h1{
+    font-family:var(--mono); font-size:clamp(28px,4.2vw,42px);
+    line-height:1.15; margin:0 0 14px; font-weight:700;
+  }
+  .hero .role{
+    font-size:17px; color:var(--copper-deep); font-weight:600; margin-bottom:18px;
+  }
+  .hero p{font-size:16px; max-width:46ch; color:#3b414a;}
+  .hero .contact{margin-top:26px; font-size:14px; color:#3b414a;}
+  .hero .contact div{margin-bottom:4px;}
+  .hero .photo{
+    border-radius:4px; overflow:hidden; border:1px solid var(--line);
+    box-shadow:0 10px 30px -14px rgba(18,22,28,0.35);
+  }
+  .hero .photo img{display:block; width:100%; height:100%; object-fit:cover;}
+
+  h2.section-title{
+    font-family:var(--mono); font-size:22px; font-weight:600; margin:0 0 28px;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; color:var(--teal); font-weight:600;
+    margin:0 0 6px;
+  }
+
+  .exp-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+  .exp-grid img{width:100%; border-radius:4px; border:1px solid var(--line);}
+  .exp-grid ul{margin:14px 0 0; padding-left:20px;}
+  .exp-grid li{margin-bottom:10px; font-size:15.5px;}
+  .exp-grid h3{font-size:19px; margin:0 0 4px;}
+  .exp-grid .sub{color:#5a6068; font-size:14px; margin-bottom:14px;}
+
+  .project{margin-bottom:64px;}
+  .project:last-child{margin-bottom:0;}
+  .project-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .project-head h3{font-size:21px; margin:0;}
+  .project-head .tag{
+    font-family:var(--mono); font-size:12px; color:var(--copper-deep);
+    border:1px solid var(--copper); border-radius:20px; padding:3px 11px;
+  }
+  .project-body{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:20px; align-items:start;}
+  .project video{width:100%; border-radius:4px; border:1px solid var(--line); background:#000;}
+  .project ul{margin:0 0 14px; padding-left:20px;}
+  .project li{margin-bottom:9px; font-size:15.5px;}
+  .components{
+    font-family:var(--mono); font-size:12.5px; color:#4a5058;
+    background:var(--paper-dim); border:1px solid var(--line); border-radius:4px;
+    padding:12px 14px; line-height:1.6; margin-top:10px;
+  }
+
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 40px;}
+  .skills-grid .cat{font-family:var(--mono); font-size:13px; color:var(--teal); font-weight:600; margin-bottom:6px;}
+  .skills-grid .items{font-size:15px; color:#2b3036;}
+
+  footer{padding:48px 0 64px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px;}
+  footer .contact div{font-size:14.5px; margin-bottom:5px;}
+  footer .made{font-family:var(--mono); font-size:12px; color:#8b9099;}
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero .photo{order:-1;}
+    .exp-grid{grid-template-columns:1fr;}
+    .project-body{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    header.nav nav{gap:14px;}
+    header.nav nav a{font-size:13px;}
+  }
+
+  :focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="name" href="#top">N. Abidaoud</a>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Norman Abidaoud</h1>
+      <div class="role">Electrical Engineering @ Tufts University</div>
+      <p>Sophomore EE student working on high-voltage accumulators and safety-critical circuitry for a Formula SAE car, alongside independent builds in embedded control and PCB design.</p>
+      <div class="contact">
+        <div>norman.abidaoud@tufts.edu</div>
+        <div>+1 (617) 785-6312 · Medford, MA</div>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="assets/img/team.jpg" alt="Tufts Electric Racing team with their Formula SAE car">
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Tufts Electric Racing</h2>
+    <div class="exp-grid">
+      <div>
+        <h3>Member, Electrical &amp; Accumulator Team</h3>
+        <div class="sub">Sept 2025 – Present · Tufts University, Formula SAE</div>
+        <ul>
+          <li>Support the high-voltage accumulator build alongside the accumulator lead — soldering cell taps, wiring, and insulating LV/HV connections.</li>
+          <li>Design and wire the safety loop and fuse boxes for the vehicle's low-voltage system, including the linear switch-and-gate sequence that gates the car's startup.</li>
+          <li>Design schematics, PCB layouts, and bills of materials in Altium Designer for electronics development.</li>
+          <li>Researched accumulator design across battery chemistries and cell formats, drawing on references from modern EVs and other university racing teams.</li>
+        </ul>
+        <div class="components">This year, the club passed both mechanical and electrical inspections, clearing the car to drive on motor power.</div>
+      </div>
+      <div>
+        <img src="assets/img/team.jpg" alt="Tufts Electric Racing team photo with the car">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow">Personal Projects</p>
+    <h2 class="section-title">Independent builds</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Self-Balancing 2-Axis Rope-Suspended System</h3>
+        <span class="tag">Team of 2 · Summer 2026</span>
+      </div>
+      <div class="project-body">
+        <div>
+          <video controls preload="metadata" poster="assets/img/balancer-poster.jpg">
+            <source src="assets/video/balancer.mp4" type="video/mp4">
+            Your browser doesn't support embedded video. <a href="assets/video/balancer.mp4">Download the clip</a> instead.
+          </video>
+        </div>
+        <div>
+          <ul>
+            <li>Built a self-balancing, rope-suspended wheel that stabilizes across two axes using an IMU, stepper motor, and Li-Po battery pack.</li>
+            <li>Implemented PID control in Arduino C++ to hold the chassis level under disturbances like rope sway and wind.</li>
+            <li>Sized circuit protection to each load (0.5 A for the Arduino, 2 A for the battery) and hand-crimped wiring of varying gauges to integrate the motor, driver, and battery.</li>
+            <li>Tuning the PID was the hardest part — early attempts caused jitters and higher current draw before the gains were dialed in.</li>
+          </ul>
+          <div class="components">NEMA17 stepper · Arduino Uno R3 · MPU6050 IMU · 1000mAh Li-Po · DRV8825 driver · 0.5A / 2A fuses</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Solar Panel Tracking System</h3>
+        <span class="tag">Team of 2 · Summer 2026</span>
+      </div>
+      <div class="project-body">
+        <div>
+          <video controls preload="metadata" poster="assets/img/solar-poster.jpg">
+            <source src="assets/video/solar.mp4" type="video/mp4">
+            Your browser doesn't support embedded video. <a href="assets/video/solar.mp4">Download the clip</a> instead.
+          </video>
+        </div>
+        <div>
+          <ul>
+            <li>Used light-dependent resistors (LDRs) to sense the light source's position and steered the panel toward it with servos.</li>
+            <li>Designed a dual power-supply architecture, isolating the higher-draw servo circuit from the Arduino and its logic-level wiring.</li>
+            <li>Increases sun exposure throughout the day compared to a fixed panel.</li>
+            <li>Main challenge was calibrating the LDRs to respond consistently to the same light and translating that signal into servo movement.</li>
+          </ul>
+          <div class="components">Breadboard · Arduino Uno · LDR modules · 180° servo motors · AA battery holder</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Skills</p>
+    <h2 class="section-title">Tools &amp; languages</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="cat">Hardware &amp; Design</div>
+        <div class="items">Altium Designer (schematics, PCB layout, BOMs), PCB soldering, wire-bonding, crimping, Arduino</div>
+      </div>
+      <div>
+        <div class="cat">Programming</div>
+        <div class="items">C++, C, Java, Python</div>
+      </div>
+      <div>
+        <div class="cat">AI / ML</div>
+        <div class="items">PyTorch, GitHub Copilot, Claude</div>
+      </div>
+      <div>
+        <div class="cat">Other</div>
+        <div class="items">Blender (3D modeling), Microsoft Office</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div><strong>Norman Abidaoud</strong></div>
+      <div><a href="mailto:norman.abidaoud@tufts.edu">norman.abidaoud@tufts.edu</a></div>
+      <div>+1 (617) 785-6312</div>
+    </div>
+    <div class="made">Tufts University · Electrical Engineering</div>
+  </div>
+</footer>
+
+</body>
+</html>
